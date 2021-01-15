@@ -1,30 +1,27 @@
+
 import java.util.ArrayList;
 class Question1{
-    public static ArrayList<Integer> primes( ArrayList<Integer> myList ) {
+    public static ArrayList<Integer> primes(int n) {
         ArrayList<Integer> primes = new ArrayList<Integer>();
+        for(int i = 2; i <= n; i++){
+            primes.add(i); 
+        }
         
-        for(int i = myList.size()-1; i >= 0; i--){
-            int divideBy = 2;
-            if((myList.get(i) / divideBy != 0) && divideBy < myList.get(i)){
-                divideBy++;                
-            }else{
-                primes.remove(myList.get(i)); 
+        for(int i = 0; i < primes.size(); i++){
+            int p = primes.get(i);
+            for(int j = primes.size()-1; j >= i + 1; j--){
+             if(primes.get(j) % p == 0){
+                 primes.remove(j);
+                }
             }
-            //primes.add(myList.get(i));
         }
         return primes; 
     }
-    
-    
+
     public static void main (String[] args) {
-        ArrayList<Integer> nums = new ArrayList<Integer>();
-        int n = 100; 
-        for(int i = 2; i < n; i++){
-            nums.add(i); 
-        }
-        
-        System.out.println("List of numbers: " + nums);
-        System.out.println("List of prime numbers: " + primes(nums));
+        ArrayList<Integer> nums = new ArrayList<Integer>(100);
+
+        System.out.println("List of prime numbers: " + primes(100));
     }
-    
+
 }
