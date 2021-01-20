@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 class Question1{
     public static ArrayList<Integer> primes(int n) {
